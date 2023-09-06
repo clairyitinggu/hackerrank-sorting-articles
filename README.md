@@ -1,4 +1,5 @@
 # React: Sorting Articles  
+> Notice:  `main branch` is the initial code snippet, `solution branch`is the solution snippet.Feel free to import the main branch to codesandbox to work out your own solution.
 
 Create a basic article sorting application, as shown below. Some core functionalities have already been implemented, but the application is not complete. Application requirements are given below, and the finished application must pass all of the unit tests.
 
