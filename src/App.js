@@ -4,25 +4,33 @@ import "h8k-components";
 
 import Articles from "./components/Articles";
 
+let mostUpvoted = null;// prevent duplicate sorting
+let mostRecent = null; // prevent duplicate sorting
 const title = "Sorting Articles";
 
 function App({ articles }) {
   const [data, setData] = useState(articles);
-  // useEffect(()=>{
-  //  sortMostRecent();
-  //  sortMostUpvoted();
-  // },[])
 
   const sortMostUpvoted = ()=> {
     //use .slice() here to make a shallow copy of articles/data, so updated data can be render
     //or use ... can also make a shallow copy
-    const upvoted = [...data].sort((a,b)=> b.upvotes - a.upvotes);
-    setData(upvoted);
+    if(mostUpvoted) {
+      setData(mostUpvoted)
+    } else {
+      mostUpvoted = [...data].sort((a,b)=> b.upvotes - a.upvotes);
+      setData(mostUpvoted);
+    }
+  
   }
 
   const sortMostRecent = ()=> {
-    const recent = [...data].sort((a,b)=> new Date(b.date) - new Date(a.date));
-    setData(recent);
+    if(mostRecent){
+      setData(mostRecent)
+    }else{
+      mostRecent = [...data].sort((a,b)=> new Date(b.date) - new Date(a.date));
+      setData(mostRecent);
+    }
+    
   }
 
   return (
